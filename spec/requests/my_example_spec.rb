@@ -1,28 +1,35 @@
 #require "rspec"     #instead  of spec_helper ?
 require 'spec_helper'
 
- describe "static pages" do
+describe "static pages" do
 
-describe "the home page" do
+  let(:btitle) {"Ruby on Rails"}
+  subject {page}
 
-  it "have some content" do
-    visit '/static_pages/home'
-    page.should have_selector('title', :text=> "Ruby on Rails | Home" )
+  describe "the home page" do
+    before{visit root_path}
+    it {should have_selector('title', text: btitle) }
+    it {should have_selector('h1', text: "Snapple App")    }
   end
-end
 
-describe "about page" do
-   it "have about content" do
-      visit '/static_pages/about'
-      page.should have_selector('title', :text=> "Ruby on Rails | About" )
-   end
-end
-
-describe "help page" do
-  it "help content" do
-    visit '/static_pages/help'
-    page.should have_selector('title', :text=> "Ruby on Rails | Help" )
+  describe "about page" do
+    before{visit about_path}
+    it{ should have_selector('title', text: "#{btitle} | About" )   }
+    it{ should have_selector('h1', text: "about")}
   end
-end
 
-   end
+  describe "help page" do
+    before{visit help_path}
+    it{should have_selector('title', text: "#{btitle} | Help" )  }
+
+  end
+
+  describe "contact page" do
+    before{ visit contact_path}
+    it { should have_selector('title', text: "#{btitle} | Contact")  }
+
+  end
+
+
+
+end
