@@ -10,5 +10,17 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name
+  attr_accessible :email, :name, :password, :password_confirmation #mistama should add these?
+  has_secure_password
+
+  before_save { |usr| usr.email = email.downcase}
+
+  validates :name, presence: true, length: {maximum: 50}
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },   uniqueness: {case_sensitive: false}  #y didn't this work? format: {with: VALID-EMAIL-REGEX}
+
+  validates :password, presence: true, length: {minimum: 6}
+  validates :password_confirmation, presence: true
+
 end
