@@ -1,9 +1,26 @@
-<% provide(:title, "Sign Up") %>
+<% provide(:title, "Sign Up")  #output this? %>
 
 <h1>Sign Up</h1>
-<ul>Steps to create this:
-  <li>generate controller with new action</li>
-  <li>modify routes so /signup goes to User#new</li>
-  <li>modify new view as wanted </li>
-  <li>then change link from home page to point to signup_path.</li>
-</ul>
+
+<div class="row">
+  <div class="span6 offset3">
+     <%= form_for(@user) do |f|  %>
+
+     <%= render 'shared/error_messages' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+
+       <%= f.submit "Create account", class: "btn btn-large btn-primary" %>
+       <% end %>
+  </div>
+</div>

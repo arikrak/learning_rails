@@ -36,4 +36,13 @@ LEARNRAILS612::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+
+  #lower cost function, but created some sortv error 2nd time
+  #require 'bcrpyt'
+  #silence_warnings do
+  #  BCrypt::Engine::DEFAULT_COST = BCrypyt::Engine::MIN_COST
+  #end
+
+
 end

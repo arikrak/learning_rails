@@ -65,8 +65,25 @@ it {should respond_to(:password_confirmation)}
       before {@user.password_confirmation = "notmatch"}
     it { should_not be_valid}
   end
-
   # can also add invalid test for nil password
+
+
+  describe "return val of authenticate method" do
+    before {@user.save}
+    let(:found_user) {User.find_by_email(@user.email)}
+
+    describe "if valid psswrd" do
+      it {should == found_user.authenticate(@user.password)}
+    end
+
+    describe "if invalid psswrd" do
+       let(:user_for_invalid_password) {found_user.authenticate("invalid")}
+
+       it { should_not == user_for_invalid_password}
+      specify {user_for_invalid_password.should be_false}
+    end
+
+  end
 
 
 
