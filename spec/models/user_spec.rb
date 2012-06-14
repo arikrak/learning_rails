@@ -8,6 +8,8 @@ it {should respond_to(:name)}
 it {should respond_to(:email)}
 it {should respond_to(:password_digest)}
 it {should respond_to(:password_confirmation)}
+it {should respond_to(:remember_token)}
+it {should respond_to(:authenticate)}
 
   it{ should be_valid}
 
@@ -52,7 +54,6 @@ it {should respond_to(:password_confirmation)}
        duplic.email = @user.email.upcase
        duplic.save
      end
-
      it{ should_not be_valid}
   end
 
@@ -85,6 +86,11 @@ it {should respond_to(:password_confirmation)}
 
   end
 
+  #adding token
+  describe "remember token" do
+     before {@user.save}
+    its(:remember_token) {should_not be_blank}
+  end
 
 
 end
