@@ -10,6 +10,7 @@ LEARNRAILS612::Application.routes.draw do
 
   match '/signup', to: 'users#new'
 
+  #route to different page if user is signed in? definitely get rid of signup button*
   root to: 'static_pages#home'
 
   match '/help',to: 'static_pages#help'

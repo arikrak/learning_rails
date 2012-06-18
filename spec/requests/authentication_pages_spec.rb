@@ -38,8 +38,53 @@ describe "AuthenticationPages" do
          it {should have_link "Sign in"}
        end
 
-
      end
+
+            #c
+    describe "as wrong user" do
+      let(:user) { FactoryGirl.create(:user) }
+      let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
+      before { sign_in user }
+
+      describe "visiting Users#edit page" do
+        before { visit edit_user_path(wrong_user) }
+        it { should_not have_selector('title', text: 'Edit user') }
+      end
+
+      describe "submitting a PUT request to the Users#update action" do
+        before { put user_path(wrong_user) }
+        specify { response.should redirect_to(root_path) }
+      end
+    end
+
+
+    #tests for redirect**
+    #place in section
+    describe "for non-signed-in" do
+       let(:user) {FactoryGirl.create(:user)}
+
+      describe "try visit protected page" do
+        before do
+           visit edit_user_path(user)
+           fill_in "Email",    with: user.email
+           fill_in "Password", with: user.password
+           click_button "Sign in"
+        end
+         describe "after signin" do
+            it "should render right page" do
+              page.should  have_selector('title', text: "Edit user")
+            end
+         end
+      end
+
+
+      describe "visit user index" do
+          before { visit users_path}
+          it {should have_selector(text: 'Sign in')}
+      end
+
+    end
+
 
   end
 end

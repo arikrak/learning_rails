@@ -167,6 +167,22 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+/* user list */
+
+.users {
+   list-style: none;
+   margin: 0;
+  li{
+    overflow: auto;
+    padding: 8px;
+    border-top: 1px solid $gBlue;
+    &:last-child{
+       border-bottom: 1px solid $gBlue;
+    }
+
+  }
+}
+
 
 
 
