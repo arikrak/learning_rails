@@ -10,6 +10,9 @@ gem 'bootstrap-will_paginate', '0.0.6'
 group :development do
   gem 'sqlite3', '1.3.5'
   gem 'annotate', '~> 2.4.1.beta'
+
+  #try this
+  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git', :require => 'rails_development_boost'
 end
 
 # Gems used only for assets and not required

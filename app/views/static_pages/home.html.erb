@@ -1,3 +1,23 @@
+<% if signed_in? %>
+    <div class="row">
+       <aside class="span4">
+          <section>
+             <%= render 'shared/user_info' %>
+          </section>
+         <section>
+             <%= render 'shared/posts_form' %>
+         </section>
+       </aside>
+
+      <div class="span8">
+        <h3> Posts Feed </h3>
+        <%=  render 'shared/feed' %>
+      </div>
+
+    </div>
+
+    <% else %>
+
 <div class="center hero-unit">
 <h1>Snapple App</h1>
 <p> This is app/views/static_pages/home.html.erb</p>
@@ -8,6 +28,6 @@
 
 </div>
 
-
 <%= link_to image_tag("rails.png"), 'http://rubyonrails.org/' %>
 
+ <% end %>

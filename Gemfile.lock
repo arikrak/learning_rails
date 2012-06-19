@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/thedarkone/rails-dev-boost.git
+  revision: a995f0a3734ecf36da74dcce32ed2ba74e25c56d
+  specs:
+    rails-dev-boost (0.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -210,6 +216,7 @@ DEPENDENCIES
   jquery-rails (= 2.0.0)
   pg (= 0.12.2)
   rails (= 3.2.5)
+  rails-dev-boost!
   rb-fchange (= 0.0.5)
   rb-notifu (= 0.0.4)
   rspec-rails (= 2.10.0)

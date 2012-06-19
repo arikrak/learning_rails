@@ -83,8 +83,22 @@ describe "AuthenticationPages" do
           it {should have_selector(text: 'Sign in')}
       end
 
-    end
 
+      describe "in posts controllers" do
+           describe "submitting create" do
+              before { posts posts_path}
+             specify {response.should redirect_to signin_path}
+           end
+
+          describe "submitting destroy" do
+            before{ delete post_path(FactoryGirl.create(:post)) }
+            specify {response.should redirect_to signin_path}
+          end
+
+      end
+
+
+    end
 
   end
 end

@@ -5,5 +5,13 @@ FactoryGirl.define do
      password "iggy123"
      password_confirmation "iggy123"
 
+    factory :admin do
+      admin true
+    end
    end
+
+  factory :posts do
+     content "What up"
+    user
+  end
 end

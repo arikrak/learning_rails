@@ -10,7 +10,7 @@ module SessionsHelper
     cookies.delete(:remember_token)
   end
 
-  def signed_in?
+   def signed_in?
     !current_user.nil?
   end
 
@@ -25,6 +25,15 @@ module SessionsHelper
   def current_user?(user)
      user == current_user
   end
+
+  def signed_in_user
+    unless signed_in?
+      store_location
+      redirect_to signin_path, notice: "Sign in 1st"
+    end
+
+  end
+
 
   def redirect_back_or(default)
      redirect_to(session[:return_to] || default)
