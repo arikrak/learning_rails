@@ -13,7 +13,7 @@ describe "PostPages" do
     describe "with invalid information" do
 
       it "should not create a post" do
-        expect { click_button "Post" }.should_not change(post, :count)
+        expect { click_button "Post" }.should_not change(Post, :count)
       end
 
       describe "error messages" do
@@ -26,7 +26,7 @@ describe "PostPages" do
 
       before { fill_in 'post_content', with: "Lorem ipsum" }
       it "should create a post" do
-        expect { click_button "Post" }.should change(post, :count).by(1)
+        expect { click_button "Post" }.should change(Post, :count).by(1)
       end
     end
   end
