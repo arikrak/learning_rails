@@ -1,9 +1,15 @@
 LEARNRAILS612::Application.routes.draw do
 
 
-  resources :users
+  resources :users do
+     member do
+        get :following, :followers
+     end
+  end
+
   resources :sessions, only: [:new, :create, :destroy]
   resources :posts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
